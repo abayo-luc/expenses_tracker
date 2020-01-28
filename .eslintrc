@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": ["@react-native-community"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "parser": "babel-eslint"
+}
