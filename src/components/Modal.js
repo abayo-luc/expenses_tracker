@@ -1,33 +1,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, TouchableWithoutFeedback, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import {Modal, Portal} from 'react-native-paper';
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   contentContainer: {
     flex: 1,
-    justifyContent: 'flex-end',
   },
-  empty: {
-    flex: 1,
+  container: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
   },
 });
 const ModalContainer = ({children, visible, containerStyle, onDismiss}) => {
   return (
     <Portal layered>
-      <Modal
-        visible={visible}
-        onDismiss={onDismiss}
-        contentContainerStyle={[styles.container, containerStyle]}>
-        <View style={styles.contentContainer}>
-          <TouchableWithoutFeedback onPress={onDismiss}>
-            <View style={styles.empty} />
-          </TouchableWithoutFeedback>
+      <View style={styles.contentContainer}>
+        <Modal
+          visible={visible}
+          onDismiss={onDismiss}
+          contentContainerStyle={[styles.container, containerStyle]}>
           {children}
-        </View>
-      </Modal>
+        </Modal>
+      </View>
     </Portal>
   );
 };

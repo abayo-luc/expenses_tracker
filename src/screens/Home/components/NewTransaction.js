@@ -4,7 +4,7 @@ import {TextInput, useTheme, Button} from 'react-native-paper';
 const {height: DEVICE_HEIGHT} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    minHeight: DEVICE_HEIGHT * 0.3,
+    minHeight: DEVICE_HEIGHT * 0.2,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },
@@ -20,11 +20,11 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end',
   },
 });
-const NewTransaction = () => {
+const NewTransaction = ({onSave}) => {
   const {colors} = useTheme();
   const [state, setState] = useState({title: '', amount: ''});
   return (
-    <View style={[styles.container, {backgroundColor: colors.black}]}>
+    <View style={[styles.container, {backgroundColor: colors.surface}]}>
       <View style={styles.content}>
         <TextInput
           label="Title"
@@ -41,7 +41,9 @@ const NewTransaction = () => {
         />
         <Button
           mode="outlined"
-          onPress={() => console.log('Save>>>>>')}
+          onPress={() => {
+            onSave();
+          }}
           style={[styles.button, {backgroundColor: colors.accent}]}>
           Save
         </Button>

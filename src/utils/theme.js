@@ -6,6 +6,7 @@ const customColors = {
   primary: isDark ? white : black,
   accent: '#76ecbe',
   background: isDark ? black002 : white,
+  surface: isDark ? black001 : white,
   black: black001,
   grey: grey600,
 };
