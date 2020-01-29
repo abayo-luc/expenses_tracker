@@ -1,15 +1,14 @@
 import {createStackNavigator} from 'react-navigation-stack';
-
-import HomeScreen from '../screens/Home';
+import OptionsScreens from '../screens/Options';
 
 export default createStackNavigator(
   {
-    Home: {
-      screen: HomeScreen,
+    Options: {
+      screen: OptionsScreens,
     },
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Options',
     headerMode: 'none',
   },
 );
