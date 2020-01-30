@@ -1,11 +1,12 @@
 import {DarkTheme, DefaultTheme} from 'react-native-paper';
 import {black001, black002, grey600, black, white} from './colors';
-const isDark = false;
+const isDark = true;
 const theme = isDark ? DarkTheme : DefaultTheme;
 const customColors = {
   primary: isDark ? white : black,
   accent: '#76ecbe',
   background: isDark ? black002 : white,
+  surface: isDark ? black001 : white,
   black: black001,
   grey: grey600,
 };
