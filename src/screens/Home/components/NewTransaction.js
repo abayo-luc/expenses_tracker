@@ -4,7 +4,7 @@ import {TextInput, useTheme, Button} from 'react-native-paper';
 const {height: DEVICE_HEIGHT} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
-    minHeight: DEVICE_HEIGHT * 0.2,
+    minHeight: DEVICE_HEIGHT * 0.3,
     borderTopLeftRadius: 15,
     borderTopRightRadius: 15,
   },

@@ -3,9 +3,6 @@ import PropTypes from 'prop-types';
 import {StyleSheet, View} from 'react-native';
 import {Modal, Portal} from 'react-native-paper';
 const styles = StyleSheet.create({
-  contentContainer: {
-    flex: 1,
-  },
   container: {
     position: 'absolute',
     bottom: 0,
@@ -15,14 +12,12 @@ const styles = StyleSheet.create({
 const ModalContainer = ({children, visible, containerStyle, onDismiss}) => {
   return (
     <Portal layered>
-      <View style={styles.contentContainer}>
-        <Modal
-          visible={visible}
-          onDismiss={onDismiss}
-          contentContainerStyle={[styles.container, containerStyle]}>
-          {children}
-        </Modal>
-      </View>
+      <Modal
+        visible={visible}
+        onDismiss={onDismiss}
+        contentContainerStyle={[styles.container, containerStyle]}>
+        {children}
+      </Modal>
     </Portal>
   );
 };
