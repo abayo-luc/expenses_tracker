@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, FlatList} from 'react-native';
+import {connect} from 'react-redux';
 import Container from '../../components/Container';
 import styles from './styles';
 import Modal from '../../components/Modal';
@@ -9,13 +10,18 @@ import Header from '../../components/Header';
 import Spending from './components/Spending';
 import Transaction from './components/cards/Transaction';
 import Chart from './components/Chart';
+import {fetchTransactions} from '../../store/actions/transaction.actions';
 const data = [...Array(10).keys()].map(item => ({
   id: `item-${item}`,
   title: `item ${item}`,
 }));
 
-const HomeScreen = () => {
+const HomeScreen = ({isFetching, fetchData}) => {
   const [isModalVisible, toggleModal] = useState(false);
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
+
   return (
     <Container>
       <View style={styles.container}>
@@ -49,5 +55,10 @@ const HomeScreen = () => {
     </Container>
   );
 };
-
-export default HomeScreen;
+const mapStateToProps = ({transactions}) => ({
+  ...transactions,
+});
+export default connect(
+  mapStateToProps,
+  {fetchData: fetchTransactions},
+)(HomeScreen);

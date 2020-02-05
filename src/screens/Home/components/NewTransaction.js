@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
+import {connect} from 'react-redux';
 import {TextInput, useTheme, Button} from 'react-native-paper';
 import DatePicker from '../../../components/DatePicker';
+import {saveNewTransactions} from '../../../store/actions/transaction.actions';
 const {height: DEVICE_HEIGHT} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
@@ -23,30 +25,33 @@ const styles = StyleSheet.create({
 });
 const NewTransaction = ({onSave}) => {
   const {colors} = useTheme();
-  const [state, setState] = useState({title: '', amount: ''});
+  const [date, setDate] = useState(new Date());
+  const [title, setTitle] = useState('');
+  const [amount, setAmount] = useState('');
+  const _handleSave = () => {
+    onSave({title, date, amount});
+  };
   return (
     <View style={[styles.container, {backgroundColor: colors.surface}]}>
       <View style={styles.content}>
         <TextInput
           label="Title"
-          value={state.title}
+          value={title}
           mode="outlined"
-          onChangeText={text => setState({...state, title: text})}
+          onChangeText={setTitle}
         />
         <TextInput
           label="Rwf"
-          value={state.amount}
+          value={amount}
           mode="outlined"
           keyboardType="numeric"
-          onChangeText={text => setState({...state, amount: text})}
+          onChangeText={setAmount}
           style={styles.input}
         />
-        <DatePicker />
+        <DatePicker onChange={setDate} date={date} />
         <Button
           mode="outlined"
-          onPress={() => {
-            onSave();
-          }}
+          onPress={_handleSave}
           style={[styles.button, {backgroundColor: colors.accent}]}>
           Save
         </Button>
@@ -55,4 +60,7 @@ const NewTransaction = ({onSave}) => {
   );
 };
 
-export default NewTransaction;
+export default connect(
+  null,
+  {onSave: saveNewTransactions},
+)(NewTransaction);

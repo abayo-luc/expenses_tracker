@@ -1,7 +1,13 @@
-import {SAVE_NEW_TRANSACTION} from '../types';
+import {
+  SAVE_NEW_TRANSACTION,
+  FETCHING_TRANSACTIONS,
+  FETCHING_TRANSACTIONS_FAILED,
+} from '../types';
 
 const INITIAL_STATE = {
-  transaction: {},
+  transaction: {
+    isFetching: false,
+  },
 };
 export default (state = INITIAL_STATE, {type, payload}) => {
   switch (type) {
@@ -11,6 +17,16 @@ export default (state = INITIAL_STATE, {type, payload}) => {
         transaction: {
           ...payload,
         },
+      };
+    case FETCHING_TRANSACTIONS:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCHING_TRANSACTIONS_FAILED:
+      return {
+        ...state,
+        isFetching: false,
       };
     default:
       return state;

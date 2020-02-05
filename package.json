@@ -13,6 +13,7 @@
     "@react-native-community/async-storage": "^1.7.1",
     "@react-native-community/datetimepicker": "^2.2.1",
     "@react-native-community/masked-view": "^0.1.6",
+    "axios": "^0.19.2",
     "color": "^3.1.2",
     "prop-types": "^15.7.2",
     "react": "16.9.0",

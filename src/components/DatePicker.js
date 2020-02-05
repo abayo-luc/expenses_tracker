@@ -1,8 +1,10 @@
+/* eslint-disable react-native/no-inline-styles */
 import React, {useState} from 'react';
 import {View, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import {Text, useTheme} from 'react-native-paper';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import Icon from '../components/Icon';
+const isIOS = Platform.OS === 'ios';
 const styles = StyleSheet.create({
   container: {
     width: '100%',
@@ -10,6 +12,10 @@ const styles = StyleSheet.create({
     borderWidth: StyleSheet.hairlineWidth * 2,
     marginVertical: 5,
     borderRadius: 5,
+  },
+  pickerContainer: {
+    borderRadius: 5,
+    borderWidth: StyleSheet.hairlineWidth * 2,
   },
   buttonContent: {
     flexDirection: 'row',
@@ -21,54 +27,65 @@ const styles = StyleSheet.create({
     letterSpacing: 2,
   },
 });
-const DatePicker = () => {
+const DatePicker = ({onChange, date}) => {
   const {colors} = useTheme();
-  const [state, setState] = useState({
-    date: new Date(),
-    mode: 'date',
-    show: false,
-  });
-  const _setDate = (event, date) => {
-    date = date || state.date;
-    setState({
-      ...state,
-      show: Platform.OS === 'ios' ? true : false,
-      date,
-    });
+  const [show, setShow] = useState(isIOS);
+  const _handleChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    onChange(currentDate);
+    setShow(isIOS ? true : false);
   };
-  const _showDatePicker = mode => {
-    setState({
-      ...state,
-      show: true,
-      mode,
-    });
+  const _showDatePicker = () => {
+    setShow(true);
   };
 
   return (
-    <View
-      style={[
-        styles.container,
-        {backgroundColor: colors.background, borderColor: colors.grey},
-      ]}>
-      <TouchableOpacity onPress={_showDatePicker}>
-        <View style={styles.buttonContent}>
-          <Icon name="calendar" color={colors.accent} />
-          <Text style={styles.text}>
-            {new Date(state.date).toLocaleDateString('en-GB')}
-          </Text>
+    <View>
+      {!isIOS ? (
+        <View style={[styles.container, {borderColor: colors.grey}]}>
+          <TouchableOpacity onPress={_showDatePicker}>
+            <View style={styles.buttonContent}>
+              <Icon name="calendar" color={colors.accent} />
+              <Text style={styles.text}>
+                {new Date(date).toLocaleDateString('en-GB')}
+              </Text>
+            </View>
+          </TouchableOpacity>
         </View>
-      </TouchableOpacity>
-      {state.show && (
-        <DateTimePicker
-          value={state.date}
-          maximumDate={new Date()}
-          mode={state.mode}
-          display="default"
-          locale="es-GB"
-          onChange={_setDate}
-          textColor="#FF8"
-        />
+      ) : (
+        <View style={[styles.container, {borderColor: 'transparent'}]}>
+          <View style={styles.buttonContent}>
+            <Icon name="calendar" color={colors.accent} />
+            <Text style={styles.text}>
+              {new Date(date).toLocaleDateString('en-GB')}
+            </Text>
+          </View>
+        </View>
       )}
+      <View
+        style={
+          isIOS && [
+            styles.pickerContainer,
+            {
+              backgroundColor: colors.background,
+              borderColor: colors.grey,
+            },
+          ]
+        }>
+        {show && (
+          <DateTimePicker
+            testID="dateTimePicker"
+            timeZoneOffsetInMinutes={0}
+            value={date}
+            mode="date"
+            is24Hour={true}
+            display="default"
+            onChange={_handleChange}
+            initialValue={new Date()}
+            maximumDate={new Date()}
+          />
+        )}
+      </View>
     </View>
   );
 };
