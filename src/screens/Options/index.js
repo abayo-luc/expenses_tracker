@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   expandingRow: {
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   iconContainer: {
     alignItems: 'center',
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
 const OptionsScreen = () => {
   const {colors} = useTheme();
   const [notify, setNotification] = useState(false);
-  const [lightMode, setLightMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   return (
     <Container>
       <View style={styles.container}>
@@ -72,7 +73,7 @@ const OptionsScreen = () => {
             />
             <List.Item
               title="Theme"
-              description={lightMode ? 'Light on' : 'Light off'}
+              description={darkMode ? 'Dark on' : 'Dark off'}
               left={props => (
                 <View {...props} style={styles.iconContainer}>
                   <Icon
@@ -86,9 +87,9 @@ const OptionsScreen = () => {
               right={props => (
                 <Switch
                   // {...props}
-                  value={lightMode}
+                  value={darkMode}
                   onValueChange={() => {
-                    setLightMode(!lightMode);
+                    setDarkMode(!darkMode);
                   }}
                 />
               )}

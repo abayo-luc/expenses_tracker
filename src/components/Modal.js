@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, SafeAreaView} from 'react-native';
 import {Modal, Portal} from 'react-native-paper';
 const styles = StyleSheet.create({
   container: {
     position: 'absolute',
     bottom: 0,
+    right: 0,
     width: '100%',
+    justifyContent: 'center',
   },
 });
 const ModalContainer = ({children, visible, containerStyle, onDismiss}) => {
@@ -16,7 +18,7 @@ const ModalContainer = ({children, visible, containerStyle, onDismiss}) => {
         visible={visible}
         onDismiss={onDismiss}
         contentContainerStyle={[styles.container, containerStyle]}>
-        {children}
+        <SafeAreaView>{children}</SafeAreaView>
       </Modal>
     </Portal>
   );

@@ -21,6 +21,8 @@ export default StyleSheet.create({
   },
   listHeaderContainer: {
     marginBottom: 15,
+    width: '100%',
+    justifyContent: 'center',
   },
   list: {
     paddingBottom: 20,

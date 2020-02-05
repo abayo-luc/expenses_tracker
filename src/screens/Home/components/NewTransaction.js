@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, StyleSheet, Dimensions} from 'react-native';
 import {TextInput, useTheme, Button} from 'react-native-paper';
+import DatePicker from '../../../components/DatePicker';
 const {height: DEVICE_HEIGHT} = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
@@ -36,9 +37,11 @@ const NewTransaction = ({onSave}) => {
           label="Rwf"
           value={state.amount}
           mode="outlined"
+          keyboardType="numeric"
           onChangeText={text => setState({...state, amount: text})}
           style={styles.input}
         />
+        <DatePicker />
         <Button
           mode="outlined"
           onPress={() => {

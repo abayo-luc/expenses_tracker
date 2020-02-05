@@ -1,8 +1,8 @@
 import React from 'react';
-import {Dimensions} from 'react-native';
+import {ScrollView} from 'react-native';
 import {useTheme} from 'react-native-paper';
 import {VictoryBar, VictoryChart, VictoryTheme} from 'victory-native';
-const {width: DEVICE_WIDTH} = Dimensions.get('window');
+import screenOrientation from '../../../utils/screenOrientation';
 const data = [
   {quarter: '0', earnings: 0},
   {quarter: 'Mon', earnings: 1500},
@@ -16,26 +16,30 @@ const data = [
 
 const Chart = () => {
   const {colors} = useTheme();
+  const {isLandscape, ...rest} = screenOrientation();
   return (
-    <VictoryChart width={DEVICE_WIDTH} theme={VictoryTheme.material}>
-      <VictoryBar
-        data={data}
-        x="quarter"
-        y="earnings"
-        style={{
-          data: {fill: colors.accent},
-          parent: {
-            border: '1px solid #ddf',
-          },
-        }}
-        alignment="middle"
-        barRatio={0.7}
-        animate={{
-          duration: 2000,
-          onLoad: {duration: 1000},
-        }}
-      />
-    </VictoryChart>
+    <ScrollView horizontal>
+      <VictoryChart width={rest.width * 1.5} theme={VictoryTheme.material}>
+        <VictoryBar
+          data={data}
+          x="quarter"
+          y="earnings"
+          style={{
+            data: {fill: colors.accent},
+            parent: {
+              border: '1px solid #ddf',
+            },
+          }}
+          labels={({datum}) => `Rwf ${datum.earnings}`}
+          alignment="middle"
+          barRatio={0.8}
+          animate={{
+            duration: 2000,
+            onLoad: {duration: 1000},
+          }}
+        />
+      </VictoryChart>
+    </ScrollView>
   );
 };
 
