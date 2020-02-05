@@ -52,6 +52,16 @@ export default (state = INITIAL_STATE, {type, payload}) => {
           ...payload,
         },
       };
+    case FETCHING_TRANSACTIONS:
+      return {
+        ...state,
+        isFetching: true,
+      };
+    case FETCHING_TRANSACTIONS_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+      };
     default:
       return state;
   }
