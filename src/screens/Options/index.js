@@ -25,5 +25,10 @@ const OptionsScreen = () => {
     </Container>
   );
 };
-
-export default OptionsScreen;
+const mapStateToProps = ({theme}) => ({
+  theme: theme.theme,
+});
+export default connect(
+  mapStateToProps,
+  {handleTheme: changeTheme},
+)(OptionsScreen);
