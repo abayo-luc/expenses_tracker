@@ -1,7 +1,13 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text, Avatar, useTheme, Caption, Paragraph} from 'react-native-paper';
-import theme from '../../../../utils/theme';
+import {
+  Text,
+  Avatar,
+  useTheme,
+  Caption,
+  Paragraph,
+  Theme,
+} from 'react-native-paper';
 const styles = StyleSheet.create({
   container: {
     borderWidth: StyleSheet.hairlineWidth / 2,
@@ -32,7 +38,7 @@ const Transaction = ({item}) => {
         styles.container,
         {borderColor: colors.accent, borderRadius: roundness},
       ]}
-      theme={theme}>
+      theme={Theme}>
       <View style={styles.avatar}>
         <Avatar.Image
           size={42}

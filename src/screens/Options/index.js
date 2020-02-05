@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
-import {View, StyleSheet, ScrollView, Platform} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
+import {connect} from 'react-redux';
 import Container from '../../components/Container';
 import Header from './components/Header';
 import Balance from './components/Balance';
 import SubBalance from './components/SubBalance';
 import {List, Switch, useTheme} from 'react-native-paper';
 import Icon from '../../components/Icon';
+import {changeTheme} from '../../store/actions/theme.actions';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -30,10 +32,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-const OptionsScreen = () => {
+const OptionsScreen = ({handleTheme, theme}) => {
+  const darkMode = theme === 'dark';
   const {colors} = useTheme();
   const [notify, setNotification] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
+  const _handleThemeChange = () => {
+    const appTheme = darkMode ? 'white' : 'dark';
+    handleTheme(appTheme);
+  };
   return (
     <Container>
       <View style={styles.container}>
@@ -63,7 +69,6 @@ const OptionsScreen = () => {
               color={colors.accent}
               right={props => (
                 <Switch
-                  // {...props}
                   value={notify}
                   onValueChange={() => {
                     setNotification(!notify);
@@ -86,11 +91,8 @@ const OptionsScreen = () => {
               )}
               right={props => (
                 <Switch
-                  // {...props}
-                  value={darkMode}
-                  onValueChange={() => {
-                    setDarkMode(!darkMode);
-                  }}
+                  value={theme === 'dark'}
+                  onValueChange={_handleThemeChange}
                 />
               )}
             />
@@ -100,5 +102,10 @@ const OptionsScreen = () => {
     </Container>
   );
 };
-
-export default OptionsScreen;
+const mapStateToProps = ({theme}) => ({
+  theme: theme.theme,
+});
+export default connect(
+  mapStateToProps,
+  {handleTheme: changeTheme},
+)(OptionsScreen);

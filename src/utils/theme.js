@@ -1,25 +1,46 @@
+import {useState, useEffect} from 'react';
 import {DarkTheme, DefaultTheme} from 'react-native-paper';
 import {black001, black002, grey600, black, white} from './colors';
-const isDark = true;
-const theme = isDark ? DarkTheme : DefaultTheme;
-const customColors = {
-  primary: isDark ? white : black,
-  accent: '#76ecbe',
-  background: isDark ? black002 : white,
-  surface: isDark ? black001 : white,
-  black: black001,
-  grey: grey600,
-};
-export default {
-  ...theme,
-  dark: isDark,
-  mode: 'adaptive',
-  roundness: 4,
+const defaultAppTheme = {
+  theme: DefaultTheme,
   colors: {
-    ...theme.colors,
-    ...customColors,
+    primary: black,
+    accent: '#76ecbe',
+    background: white,
+    surface: white,
+    black: black001,
+    grey: grey600,
   },
-  animation: {
-    scale: 1.0,
-  },
+};
+export default (theme = 'light') => {
+  const [appTheme, setAppTheme] = useState(defaultAppTheme);
+
+  useEffect(() => {
+    const newAppTheme = {
+      ...defaultAppTheme,
+    };
+    if (theme === 'dark') {
+      newAppTheme.theme = DarkTheme;
+      newAppTheme.colors = {
+        ...newAppTheme.colors,
+        primary: white,
+        background: black002,
+        surface: black001,
+      };
+    }
+    setAppTheme(newAppTheme);
+  }, [theme]);
+  return {
+    ...appTheme.theme,
+    dark: theme === 'dark',
+    mode: 'adaptive',
+    roundness: 4,
+    colors: {
+      ...appTheme.theme.colors,
+      ...appTheme.colors,
+    },
+    animation: {
+      scale: 1.0,
+    },
+  };
 };

@@ -1,11 +1,12 @@
 import React from 'react';
-import {Provider as PaperProvider} from 'react-native-paper';
-import theme from './src/utils/theme';
-import Navigation from './src/navigation';
+import {Provider as ReduxProvider} from 'react-redux';
+import store from './src/store';
+import AppContainer from './src';
+
 const App = () => (
-  <PaperProvider theme={theme}>
-    <Navigation />
-  </PaperProvider>
+  <ReduxProvider store={store}>
+    <AppContainer />
+  </ReduxProvider>
 );
 
 export default App;
