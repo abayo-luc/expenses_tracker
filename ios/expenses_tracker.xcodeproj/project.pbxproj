@@ -18,6 +18,8 @@
 		2DCD954D1E0B4F2C00145EB5 /* expenses_trackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* expenses_trackerTests.m */; };
 		6BF40402AB42C641F9913E62 /* libPods-expenses_tracker.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A78FB43926D063C1F044ACB1 /* libPods-expenses_tracker.a */; };
 		77F9777F2A607FC3091DD9E9 /* libPods-expenses_tracker-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A9E7EB491D0B1E29DA2D5F4 /* libPods-expenses_tracker-tvOSTests.a */; };
+		817907A723EAC9C000F5F3AB /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 817907A623EAC9C000F5F3AB /* Ionicons.ttf */; };
+		817907A923EAC9F900F5F3AB /* Roboto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 817907A823EAC9F900F5F3AB /* Roboto.ttf */; };
 		B02B9B8C3F7FF8EE319AFC6C /* libPods-expenses_tracker-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A93E701F490559EDF04B7BE /* libPods-expenses_tracker-tvOS.a */; };
 		DFBE7FAF23270FE3810DB1F7 /* libPods-expenses_trackerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D1393DC4C5C48F04ACEFD16 /* libPods-expenses_trackerTests.a */; };
 /* End PBXBuildFile section */
@@ -61,7 +63,8 @@
 		6D1393DC4C5C48F04ACEFD16 /* libPods-expenses_trackerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-expenses_trackerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A93E701F490559EDF04B7BE /* libPods-expenses_tracker-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-expenses_tracker-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E837E6FE9AA573D648B256E /* Pods-expenses_tracker-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expenses_tracker-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-expenses_tracker-tvOSTests/Pods-expenses_tracker-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		815F340723E1B5140023DA06 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		817907A623EAC9C000F5F3AB /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = ../assets/fonts/Ionicons.ttf; sourceTree = "<group>"; };
+		817907A823EAC9F900F5F3AB /* Roboto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Roboto.ttf; path = ../assets/fonts/Roboto.ttf; sourceTree = "<group>"; };
 		81A3DA58F3B97AB57EB8DB45 /* Pods-expenses_trackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expenses_trackerTests.release.xcconfig"; path = "Target Support Files/Pods-expenses_trackerTests/Pods-expenses_trackerTests.release.xcconfig"; sourceTree = "<group>"; };
 		A78FB43926D063C1F044ACB1 /* libPods-expenses_tracker.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-expenses_tracker.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2F8EDA0E408D7C0AD9601EE /* Pods-expenses_tracker-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-expenses_tracker-tvOS.release.xcconfig"; path = "Target Support Files/Pods-expenses_tracker-tvOS/Pods-expenses_tracker-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -182,7 +185,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				815F340723E1B5140023DA06 /* Ionicons.ttf */,
+				817907A823EAC9F900F5F3AB /* Roboto.ttf */,
+				817907A623EAC9C000F5F3AB /* Ionicons.ttf */,
 				13B07FAE1A68108700A75B9A /* expenses_tracker */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* expenses_trackerTests */,
@@ -349,6 +353,8 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				817907A723EAC9C000F5F3AB /* Ionicons.ttf in Resources */,
+				817907A923EAC9F900F5F3AB /* Roboto.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +421,6 @@
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Foundation.ttf",
-				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Octicons.ttf",
@@ -434,7 +439,6 @@
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FontAwesome5_Solid.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Fontisto.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Foundation.ttf",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Ionicons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialCommunityIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MaterialIcons.ttf",
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/Octicons.ttf",

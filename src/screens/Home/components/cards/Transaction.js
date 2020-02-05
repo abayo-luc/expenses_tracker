@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Text, Avatar, useTheme, Caption, Title} from 'react-native-paper';
+import {Text, Avatar, useTheme, Caption, Paragraph} from 'react-native-paper';
 import theme from '../../../../utils/theme';
 const styles = StyleSheet.create({
   container: {
@@ -46,7 +46,7 @@ const Transaction = ({item}) => {
         <Caption>04/19/19 - 3:32pm</Caption>
       </View>
       <View style={styles.amount}>
-        <Title adjustsFontSizeToFit={true}>Rwf 74,7890</Title>
+        <Paragraph adjustsFontSizeToFit={true}>Rwf 74,7890</Paragraph>
       </View>
     </View>
   );
