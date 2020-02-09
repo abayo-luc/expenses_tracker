@@ -52,6 +52,11 @@ export default (state = INITIAL_STATE, {type, payload}) => {
           ...payload,
         },
       };
+    case SAVING_NEW_TRANSACTIONS_FAILED:
+      return {
+        ...state,
+        isFetching: false,
+      };
     case FETCHING_TRANSACTIONS:
       return {
         ...state,
@@ -61,6 +66,15 @@ export default (state = INITIAL_STATE, {type, payload}) => {
       return {
         ...state,
         isFetching: false,
+      };
+    case FETCHING_TRANSACTIONS_COMPLETE:
+      return {
+        ...state,
+        isFetching: false,
+        transactions: {
+          ...state.transactions,
+          ...payload,
+        },
       };
     default:
       return state;
