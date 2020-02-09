@@ -9,3 +9,4 @@ export const grey600 = '#757575';
 export const grey900 = '#212121';
 export const blueGrey50 = '#eceff1';
 export const blueGrey100 = '#cfd8dc';
+export const red500 = '#f44336';

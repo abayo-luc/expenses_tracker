@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
 import {
   Text,
   Avatar,
@@ -8,6 +8,7 @@ import {
   Paragraph,
   Theme,
 } from 'react-native-paper';
+import Icon from '../../../../components/Icon';
 const styles = StyleSheet.create({
   container: {
     borderWidth: StyleSheet.hairlineWidth / 2,
@@ -28,6 +29,7 @@ const styles = StyleSheet.create({
   amount: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 const Transaction = ({item}) => {

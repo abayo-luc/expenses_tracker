@@ -1,6 +1,6 @@
 import {useState, useEffect} from 'react';
 import {DarkTheme, DefaultTheme} from 'react-native-paper';
-import {black001, black002, grey600, black, white} from './colors';
+import {black001, black002, grey600, black, white, red500} from './colors';
 const defaultAppTheme = {
   theme: DefaultTheme,
   colors: {
@@ -38,6 +38,7 @@ export default (theme = 'light') => {
     colors: {
       ...appTheme.theme.colors,
       ...appTheme.colors,
+      red: red500,
     },
     animation: {
       scale: 1.0,
