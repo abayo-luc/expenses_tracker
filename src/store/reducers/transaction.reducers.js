@@ -5,6 +5,7 @@ import {
   FETCHING_TRANSACTIONS_COMPLETE,
   SAVING_NEW_TRANSACTIONS_COMPLETE,
   SAVING_NEW_TRANSACTIONS_FAILED,
+  DELETE_TRANSACTION_COMPLETE,
 } from '../types';
 
 const INITIAL_STATE = {
@@ -75,6 +76,13 @@ export default (state = INITIAL_STATE, {type, payload}) => {
           ...state.transactions,
           ...payload,
         },
+      };
+    case DELETE_TRANSACTION_COMPLETE:
+      const transactions = {...state.transactions};
+      delete transactions[payload.id];
+      return {
+        ...state,
+        transactions,
       };
     default:
       return state;

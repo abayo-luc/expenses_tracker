@@ -32,8 +32,8 @@ const DatePicker = ({onChange, date}) => {
   const [show, setShow] = useState(isIOS);
   const _handleChange = (event, selectedDate) => {
     const currentDate = selectedDate || date;
-    onChange(currentDate);
     setShow(isIOS ? true : false);
+    onChange(currentDate);
   };
   const _showDatePicker = () => {
     setShow(true);

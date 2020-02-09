@@ -5,6 +5,8 @@ import {
   SAVING_NEW_TRANSACTIONS_FAILED,
   FETCHING_TRANSACTIONS_COMPLETE,
   SAVING_NEW_TRANSACTIONS_COMPLETE,
+  DELETE_TRANSACTION,
+  DELETE_TRANSACTION_COMPLETE,
 } from '../types';
 import axios from '../../utils/axios';
 import objectTransform from '../../utils/objectTransform';
@@ -37,5 +39,17 @@ export const fetchTransactions = () => async dispatch => {
     dispatch({type: FETCHING_TRANSACTIONS_COMPLETE, payload: transactions});
   } catch (error) {
     dispatch({type: FETCHING_TRANSACTIONS_FAILED});
+  }
+};
+
+export const deleteTransaction = id => async dispatch => {
+  try {
+    dispatch({type: DELETE_TRANSACTION});
+    const {
+      data: {message},
+    } = await axios.delete(`/transactions/${id}`);
+    dispatch({type: DELETE_TRANSACTION_COMPLETE, payload: {id, message}});
+  } catch (error) {
+    dispatch({type: DELETE_TRANSACTION_COMPLETE, payload: {id}});
   }
 };
