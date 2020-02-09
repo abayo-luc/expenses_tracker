@@ -1,10 +1,10 @@
 import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createBottomTabNavigator, BottomTabBar} from 'react-navigation-tabs';
+import {useTheme} from 'react-native-paper';
 import HomeStack from './HomeStack';
 import OptionStack from './OptionsStack';
 import TabIcon from '../components/Icon';
-import theme from '../utils/theme';
 
 HomeStack.navigationOptions = {
   tabBarLabel: 'Home',
@@ -14,7 +14,19 @@ OptionStack.navigationOptions = {
   tabBarLabel: 'Options',
   tabBarIcon: ({focused}) => <TabIcon focused={focused} name="options" />,
 };
-const TabBarComponent = props => <BottomTabBar {...props} />;
+const TabBarComponent = props => {
+  const {colors} = useTheme();
+  const allProps = {
+    ...props,
+    activeTintColor: colors.accent,
+    style: {
+      ...props.style,
+      borderTopColor: colors.grey,
+      backgroundColor: colors.surface,
+    },
+  };
+  return <BottomTabBar {...allProps} />;
+};
 
 export default createAppContainer(
   createBottomTabNavigator(
@@ -23,22 +35,10 @@ export default createAppContainer(
       OptionStack,
     },
     {
-      tabBarComponent: props => (
-        <TabBarComponent
-          {...props}
-          style={{
-            borderTopColor: theme.colors.grey,
-            backgroundColor: theme.colors.surface,
-          }}
-        />
-      ),
+      tabBarComponent: props => <TabBarComponent {...props} />,
       lazy: true,
       tabBarOptions: {
         adaptive: true,
-        activeTintColor: theme.colors.accent,
-        style: {
-          backgroundColor: theme.colors.black,
-        },
       },
     },
   ),
