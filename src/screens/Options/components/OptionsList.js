@@ -3,6 +3,7 @@ import {StyleSheet, View} from 'react-native';
 import {List, Switch, useTheme} from 'react-native-paper';
 import {connect} from 'react-redux';
 import {changeTheme} from '../../../store/actions/theme.actions';
+import {notificationManager} from '../../../utils/PushController';
 import Icon from '../../../components/Icon';
 const styles = StyleSheet.create({
   listSection: {
@@ -14,6 +15,8 @@ const styles = StyleSheet.create({
   },
 });
 const OptionsList = ({theme, handleTheme}) => {
+  const localNotify = notificationManager;
+  localNotify.configure();
   const darkMode = theme === 'dark';
   const {colors} = useTheme();
   const [notify, setNotification] = useState(false);

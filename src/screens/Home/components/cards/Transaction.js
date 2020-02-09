@@ -43,16 +43,18 @@ const Transaction = ({item}) => {
         <Avatar.Image
           size={42}
           source={{
-            uri: 'https://avatars1.githubusercontent.com/u/20681465?s=460&v=4',
+            uri:
+              item.avatar ||
+              'https://res.cloudinary.com/dghepsznx/image/upload/v1549123822/WhatIf/placeholder-image.jpg',
           }}
         />
       </View>
       <View style={styles.content}>
         <Text numberOfLines={1}>{item.title}</Text>
-        <Caption>04/19/19 - 3:32pm</Caption>
+        <Caption>{new Date(item.date).toDateString()}</Caption>
       </View>
       <View style={styles.amount}>
-        <Paragraph adjustsFontSizeToFit={true}>Rwf 74,7890</Paragraph>
+        <Paragraph adjustsFontSizeToFit={true}>Rwf {item.amount}.00</Paragraph>
       </View>
     </View>
   );
